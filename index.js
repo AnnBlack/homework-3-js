@@ -59,7 +59,7 @@
 	console.log(reverseString(testStr));
 
 
-//5 - stringExpansion
+//5 - stringExpansion (работает с ошибкой)
 	function stringExpansion(str) {
     	let newArr = str.split("");
         let newString = "";
@@ -78,4 +78,33 @@
         return newString;
     	
     }
-    console.log(stringExpansion('2abcde2'));		
+    console.log(stringExpansion('2abcde2'));
+
+// 5 - Исправила ошибки проверки для первых и последних символов. Исправленный код ниже:
+
+function stringExpansion(str) {
+  let newArr = str.split("");
+  let newString = "";
+
+  for(let i = 0; i < newArr.length; i++) {
+    if(i == newArr.length-1) {
+      if(isNaN(parseInt(newArr[i]))) {
+        newString += newArr[i];
+      }
+    } else {
+      if(!isNaN(parseInt(newArr[i]))) {
+        if(isNaN(newArr[i + 1])) {
+          let numberArr = [];
+          numberArr.push( newArr[i + 1].repeat(newArr[i]));
+          newString += numberArr.join("");
+          i++;
+        }
+      } else {
+          newString += newArr[i];
+        }
+      }
+  }
+    return newString;
+}
+
+console.log(stringExpansion('0a2b0c3de2'));		

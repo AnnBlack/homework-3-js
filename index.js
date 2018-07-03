@@ -4,7 +4,7 @@
 	function splitAndMerge(str, sp) {
 		let newArr = str.split("");
 		let newStr = "";
-		for(var i = 0; i <= newArr.length-1; i++) {
+		for(let i = 0; i <= newArr.length-1; i++) {
 			if(newArr[i] !== sp && newArr[i] !== " "){
 				newStr = newStr + newArr[i];
 				if(i !== newArr.length-1) {
